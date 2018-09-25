@@ -1,19 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
+
+<head>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Trip Planner</title>
     <link href='https://api.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.css' rel='stylesheet' />
-    
+
     <link rel="stylesheet" href="./style.css">
 
     <script src="./bundle.js" defer></script>
 
 </head>
+
 <body>
- <div id= "map"></div>    
+    <div id="map"></div>
+    <div id="whole-box">
+        <div id="hotel-box"></div>
+        <input id="hotel-tf" class="selections" type="checkbox"><span>Hotels</span>
+        <input id="restaurant-tf" class="selections" type="checkbox"><span>Restaurant</span>
+        <input id="activity-tf" class="selections" type="checkbox"><span>Activity</span>
+        <div id="myplan-box"></div>
+    </div>
 </body>
+
 </html>

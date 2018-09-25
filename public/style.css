@@ -1,17 +1,29 @@
+* {
+  box-sizing: border-box;
+}
 
-*
-{
-    box-sizing: border-box;
-  }
-  
-  body {
-    margin: 0;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    background-color: #C1B5AD;
-  }
-  
+body {
+  display: flex;
+  margin: 0;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: #c1b5ad;
+}
 
 #map {
-    height: 100vh;
-    width: 100vh;
+  height: 100vh;
+  width: 100vh;
+}
+
+#whole-box {
+  display: flex;
+  flex-direction: column-reverse;
+  height: 100%;
+  width: 35vh;
+  background-color: orange;
+}
+
+.selections {
+  height: 45px;
+  width: 45px;
+  align-items: center;
 }

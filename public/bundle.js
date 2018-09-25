@@ -104,7 +104,18 @@ eval("/* Mapbox GL JS is licensed under the 3-Clause BSD License. Full text of l
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("console.log('Hello from Javascript')\n\nconst mapboxgl = __webpack_require__(/*! mapbox-gl */ \"./node_modules/mapbox-gl/dist/mapbox-gl.js\");\nlet newElement = document.createElement('div')\nnewElement.style.width = \"32px\";\nnewElement.style.height = \"39px\";\nnewElement.style.backgroundImage = \"url(http://i.imgur.com/WbMOfMl.png)\"\n\n//let body = document.getElementsByTagName('body')\n//body.appendChild(newElement)\n\nmapboxgl.accessToken = 'pk.eyJ1IjoiZnVsbHN0YWNrZXIiLCJhIjoiY2ptaTVkNHM0MDFmZzNybndhaGh0dDVmNSJ9.WTRPwsIO5eWtSqTIBAE91Q'\n\n\nconst map = new mapboxgl.Map({\n  container: \"map\",\n  center: [-87.6354, 41.8885], // FullStack NY coordinates; alternatively, use [-87.6354, 41.8885] for Chicago\n  zoom: 12, // starting zoom\n  style: \"mapbox://styles/mapbox/streets-v10\" // mapbox has lots of different map styles available.\n});\n\nconst newMarker = new mapboxgl.Marker(newElement).setLngLat([-87.641, 41.895]).addTo(map);\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("const buildMarker = __webpack_require__(/*! ./marker */ \"./src/marker.js\");\nconsole.log('Hello from Javascript');\n\nconst mapboxgl = __webpack_require__(/*! mapbox-gl */ \"./node_modules/mapbox-gl/dist/mapbox-gl.js\");\nlet newElement = document.createElement('div');\nnewElement.style.width = '32px';\nnewElement.style.height = '39px';\nnewElement.style.backgroundImage = 'url(http://i.imgur.com/WbMOfMl.png)';\n\n//let body = document.getElementsByTagName('body')\n//body.appendChild(newElement)\n\nmapboxgl.accessToken =\n  'pk.eyJ1IjoiZnVsbHN0YWNrZXIiLCJhIjoiY2ptaTVkNHM0MDFmZzNybndhaGh0dDVmNSJ9.WTRPwsIO5eWtSqTIBAE91Q';\n\nconst map = new mapboxgl.Map({\n  container: 'map',\n  center: [-87.6354, 41.8885], // FullStack NY coordinates; alternatively, use [-87.6354, 41.8885] for Chicago\n  zoom: 12, // starting zoom\n  style: 'mapbox://styles/mapbox/streets-v10' // mapbox has lots of different map styles available.\n});\n\nconst newMarker = new mapboxgl.Marker(newElement)\n  .setLngLat([-87.641, 41.895])\n  .addTo(map);\n\nconst jimmyJohns = buildMarker('restaurant', [-87.633379, 41.896602]);\njimmyJohns.addTo(map);\n\n\n//# sourceURL=webpack:///./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/marker.js":
+/*!***********************!*\
+  !*** ./src/marker.js ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("const mapbox = __webpack_require__(/*! mapbox-gl */ \"./node_modules/mapbox-gl/dist/mapbox-gl.js\");\n\n// const iconURLs = {\n//   hotels: 'http://i.imgur.com/D9574Cu.png',\n//   restaurants: 'http://i.imgur.com/cqR6pUI.png',\n//   activities: 'http://i.imgur.com/WbMOfMl.png'\n// };\n\nconst buildMarker = (type, coords) => {\n  const newElementMarker = document.createElement('div');\n  if (type === 'restaurant') {\n    newElementMarker.style.backgroundImage =\n      'url(http://i.imgur.com/cqR6pUI.png)';\n  } else if (type === 'hotel') {\n    newElementMarker.style.backgroundImage =\n      'url(http://i.imgur.com/D9574Cu.png)';\n  } else if (type === 'activity') {\n    newElementMarker.style.backgroundImage =\n      'url(http://i.imgur.com/WbMOfMl.png)';\n  }\n  newElementMarker.style.width = '32px';\n  newElementMarker.style.height = '39px';\n\n  let newMarker = new mapbox.Marker(newElementMarker).setLngLat(coords);\n  return newMarker;\n};\n\nmodule.exports = buildMarker;\n\n\n//# sourceURL=webpack:///./src/marker.js?");
 
 /***/ })
 
